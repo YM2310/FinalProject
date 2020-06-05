@@ -1,10 +1,10 @@
-#include "Types.h"
+#include "Header.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 
 
-
+/*maybe turn the part of removing the ilegal moves to a function, like in 4*/
 boardPosArray** validMoves(movesArray** moves, char** board) {
 
 	boardPos origin;
@@ -28,11 +28,6 @@ boardPosArray** validMoves(movesArray** moves, char** board) {
 		}
 
 			removeCells(&moves[row][col].moves, &moves[row][col].size, remove, removeIndex); //remvoe all illegal moves
-			/*
-			for (int k = 0; k < moves[row][col].size; k++) {
-				printf("(%d,%d)", moves[row][col].moves[k].rows, moves[row][col].moves[k].cols);
-			}
-			*/
 			free(remove);
 		
 		}

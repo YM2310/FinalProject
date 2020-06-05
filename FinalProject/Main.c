@@ -1,22 +1,48 @@
-#include "Types.h"
+#include "Header.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 
 int main() {
+	
 	char** board = (char**)malloc(sizeof(char*) * N);
 	int count=0;
 
 	for (int i = 0; i < N; i++)
 		board[i] = (char*)malloc(sizeof(char) * M);
 
+	boardPosArray* pos_arr=(boardPosArray*)malloc(sizeof(boardPosArray));
+	pos_arr->size = 5;
+	pos_arr->positions = (boardPos*)malloc(sizeof(boardPos) * pos_arr->size);
+	pos_arr->positions[0][0] = 3;
+	pos_arr->positions[0][1] = 5;
+	pos_arr->positions[1][0] = 1;
+	pos_arr->positions[1][1] = 4;
+	pos_arr->positions[2][0] = 2;
+	pos_arr->positions[2][1] = 3;
+	pos_arr->positions[3][0] = 4;
+	pos_arr->positions[3][1] = 1;
+	pos_arr->positions[4][0] = 5;
+	pos_arr->positions[4][1] = 3;
+
+	saveListToBinFile("LIE", pos_arr);
+
+
+}
+
+int part1test() {
+	char** board = (char**)malloc(sizeof(char*) * N);
+	int count = 0;
+
+	for (int i = 0; i < N; i++)
+		board[i] = (char*)malloc(sizeof(char) * M);
 	movesArray** moves = (movesArray**)malloc(sizeof(movesArray*) * N);
 	for (int i = 0; i < N; i++)
 		moves[i] = (movesArray*)malloc(sizeof(movesArray) * M);
 
 
 	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++){
+		for (int j = 0; j < M; j++) {
 			if (j == i) {
 				board[i][j] = '*';
 			}
@@ -54,7 +80,7 @@ int main() {
 
 	boardPosArray** newBoard = validMoves(moves, board);
 
-	
+
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			printf("(%d,%d):", i, j);
@@ -65,9 +91,4 @@ int main() {
 		}
 		printf("\n");
 	}
-	
-
-
-
-	
 }
