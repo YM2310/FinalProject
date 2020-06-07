@@ -1,31 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Header.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 
 int main() {
-	
-	char** board = (char**)malloc(sizeof(char*) * N);
-	int count=0;
-
-	for (int i = 0; i < N; i++)
-		board[i] = (char*)malloc(sizeof(char) * M);
-
-	boardPosArray* pos_arr=(boardPosArray*)malloc(sizeof(boardPosArray));
-	pos_arr->size = 5;
-	pos_arr->positions = (boardPos*)malloc(sizeof(boardPos) * pos_arr->size);
-	pos_arr->positions[0][0] = 3;
-	pos_arr->positions[0][1] = 5;
-	pos_arr->positions[1][0] = 1;
-	pos_arr->positions[1][1] = 4;
-	pos_arr->positions[2][0] = 2;
-	pos_arr->positions[2][1] = 3;
-	pos_arr->positions[3][0] = 4;
-	pos_arr->positions[3][1] = 1;
-	pos_arr->positions[4][0] = 5;
-	pos_arr->positions[4][1] = 3;
-
-	saveListToBinFile("LIE", pos_arr);
 
 
 }
@@ -91,4 +70,40 @@ int part1test() {
 		}
 		printf("\n");
 	}
+}
+
+int part5test() {
+
+	char** board = (char**)malloc(sizeof(char*) * N);
+	int count = 0;
+
+	for (int i = 0; i < N; i++)
+		board[i] = (char*)malloc(sizeof(char) * M);
+
+	boardPosArray* pos_arr = (boardPosArray*)malloc(sizeof(boardPosArray));
+	pos_arr->size = 5;
+	pos_arr->positions = (boardPos*)malloc(sizeof(boardPos) * pos_arr->size);
+	pos_arr->positions[0][0] = 3;
+	pos_arr->positions[0][1] = 5;
+	pos_arr->positions[1][0] = 1;
+	pos_arr->positions[1][1] = 4;
+	pos_arr->positions[2][0] = 2;
+	pos_arr->positions[2][1] = 3;
+	pos_arr->positions[3][0] = 4;
+	pos_arr->positions[3][1] = 1;
+	pos_arr->positions[4][0] = 5;
+	pos_arr->positions[4][1] = 3;
+
+	saveListToBinFile("LIE.bin", pos_arr);
+	FILE* f = fopen("LIE.bin", "rb");
+	int size;
+
+	fread(&size, sizeof(int), 1, f);
+	BYTE* bit_arr = (BYTE*)malloc((size * 6 / 8) + 1);
+	fread(bit_arr, 1, (size * 6 / 8) + 1, f);
+
+	bitarraytest(bit_arr, (size * 6 / 8) + 1);
+
+
+
 }
