@@ -52,8 +52,8 @@ boardPosArray** validMoves(movesArray** moves, char** board) {
 boardPos* legalMovesFrom(Move* moves, int movesSize, int row, int col) {
 	boardPos* positions = (boardPos*)malloc(sizeof(boardPos) * movesSize);
 	for (int i = 0; i < movesSize; i++) {
-		positions[i][0] = row+moves[i].rows;
-		positions[i][1] = col+moves[i].cols;
+		positions[i][0] = row+moves[i].rows+65;
+		positions[i][1] = col+moves[i].cols+48;
 	}
 	return positions;
 

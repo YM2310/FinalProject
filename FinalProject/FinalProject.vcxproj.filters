@@ -24,9 +24,24 @@
     <ClCompile Include="Part5Functions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Part4Functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Part2Functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Part3Functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PQ3Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

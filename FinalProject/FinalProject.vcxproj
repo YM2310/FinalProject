@@ -140,10 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
+    <ClInclude Include="HeaderFile.h" />
+    <ClInclude Include="PQ3Header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c" />
     <ClCompile Include="Part1Functions.c" />
+    <ClCompile Include="Part2Functions.c" />
+    <ClCompile Include="Part3Functions.c" />
+    <ClCompile Include="Part4Functions.c" />
     <ClCompile Include="Part5Functions.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
