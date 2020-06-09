@@ -2,12 +2,6 @@
 #include <stdlib.h>
 
 
-pathTree testTree(boardPos start, movesArray** moves, char** board) {
-
-
-
-}
-
 movesList* findPathCoveringAllBoard(boardPos start, movesArray** moves, char** board) {
 	int max_route_length = N * M - howManyIlegal(board);
 	pathTree path_tree = findAllPossiblePaths(start, moves, board);
