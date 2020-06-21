@@ -1,16 +1,14 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include "Header.h"
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "FullHeader.h"
 void printlist(movesList* list);
 movesArray** createMovesArraytest();
 void part4test1();
 char** createBoardtest();
-
+int part1test();
 
 
 int main() {
-	part4test1();
+	part1test();
 
 }
 

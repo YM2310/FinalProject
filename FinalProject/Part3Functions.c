@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "PQ3Header.h"
+#include "FullHeader.h"
 
 
 pathTree findAllPossiblePaths(boardPos start, movesArray **moves, char **board)

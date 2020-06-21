@@ -20,7 +20,7 @@ void checkMemoryAllocation(void* ptr);
 
 void createsMovesRec(treeNode* node, movesArray** movesA, char* string);
 
-boardPosArray** fairMoves(movesArray** moves, char** board);
+//boardPosArray** fairMoves(movesArray** moves, char** board);
 
 void Test();
 

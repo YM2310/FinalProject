@@ -1,58 +1,60 @@
-#pragma once
-#define M 5
-#define N 4
+#define _CRT_NONTDC_NO_DEPRECAET
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-typedef char BYTE;
+#include <assert.h>
+#define ASTERISK 100
+#define HASH 101
+#define SPACE 102
+#define N 8
+#define M 8 
+#define remain1 (size % 4 == 1)
+#define remain2 (size % 4 == 2)
+#define remain3 (size % 4 == 3)
+#define MASK1 0x00FC0000
+#define MASK2 0x0003F000
+#define MASK3 0x00000FC0
+#define isremain size%4!=0
+#define MASK4 0x0000003F
+#define MASK1SHORT 0xFC00
+#define MASK2SHORT 0x03F0
+#define ROWS 4
+#define COLS 5
+
+
+
+/*-----------------------types-----------------------*/
 typedef char boardPos[2];
+typedef char BYTE;
 
-/*Part 1 structs*/
-
-typedef struct _move {
+typedef struct _move
+{
 	char rows, cols;
 } Move;
 
-typedef struct _movesArray {
+/*-----------------------Arrays-----------------------*/
+typedef struct _movesArray
+{
 	unsigned int size;
 	Move* moves;
 } movesArray;
-
-typedef struct _boardPosArray {
+typedef struct _boardPosArray
+{
 	unsigned int size;
 	boardPos* positions;
 } boardPosArray;
-
-/*Part 2 structs*/
-
-typedef struct _moveCell {
+/*-----------------------Lists-----------------------*/
+typedef struct _moveCell
+{
 	Move move;
 	struct _moveCell* next, * prev;
 } moveCell;
-typedef struct _movesList {
+typedef struct _movesList
+{
 	moveCell* head;
 	moveCell* tail;
 } movesList;
-
-
-/*Part 3 structs*/
-typedef struct _treeNode treeNode;
-typedef struct _pathTree pathTree;
-typedef struct _treeNodeListCell treeNodeListCell;
-
-typedef struct _treeNode {
-	boardPos position;
-	treeNodeListCell* next_possible_positions;
-} treeNode;
-
-typedef struct _pathTree {
-	treeNode* head;
-} pathTree;
-
-typedef struct _treeNodeListCell {
-	treeNode* node;
-	struct _treeNodeListCell* next;
-} treeNodeListCell;
-
-/*part 4 structs*/
 
 typedef struct _posCell {
 	boardPos pos;
@@ -61,6 +63,21 @@ typedef struct _posCell {
 typedef struct _posList {
 	posCell* head;
 } posList;
+/*-----------------------Trees-----------------------*/
+typedef struct  _treeNodeListCell treeNodeListCell;
+typedef struct _treeNode {
+	boardPos position;
+	treeNodeListCell* next_possible_positions;
+} treeNode;
+typedef struct _treeNodeListCell {
+	treeNode* node;
+	struct _treeNodeListCell* next;
+} treeNodeListCell;
+typedef struct _pathTree {
+	treeNode* head;
+} pathTree;
+
+
 
 
 /*-------Part 1 declrations-------*/
@@ -148,3 +165,14 @@ BYTE* createBitArray(int* arr, int size, int bit_arr_size);
 int* createBitMap(boardPosArray* pos_arr, int* bitmap_size);
 bool isBitOn(unsigned char check, int bit);
 void bitarraytest(BYTE* bit_arr, int size);
+
+/*-------part 6 declatationes-------*/
+int checkAndDisplayPathFromFile(char* file_name, movesArray** moves, char** board);
+int countspaces(char** theBoard);
+boardPosArray* readListfromBinFile(char* file_name);
+boardPosArray* readPositions(FILE* file);
+boardPos* binaryToPos(char binPos);
+bool isValidpath(boardPosArray* boardPosarray, char** board, movesArray** moves, movesList* p_list);
+void getPos(boardPos* toChange, boardPos current, Move UpdateCurrent);
+void insertMovetoEndList(movesList* p_list, Move move_current);
+moveCell* createCell(char row, char col);

@@ -1,10 +1,8 @@
-#include "Header.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "FullHeader.h"
 
 
 
-/*maybe turn the part of removing the ilegal moves to a function, like in 4*/
+
 boardPosArray** validMoves(movesArray** moves, char** board) {
 
 	boardPos origin;
@@ -94,7 +92,7 @@ bool isLegal(boardPos origin, Move move, char** board) {//checks if the move is 
 	toCheck[0] = origin[0] + move.rows;
 	toCheck[1] = origin[1] + move.cols;
 
-	if (toCheck[0] > 3 || toCheck[0] < 0 || toCheck[1] > 4 || toCheck[1] < 0)
+	if (toCheck[0] > N-1 || toCheck[0] < 0 || toCheck[1] > M-1 || toCheck[1] < 0)
 		return false;
 	else {
 

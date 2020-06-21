@@ -1,5 +1,5 @@
-#include "Header.h"
-#include <stdlib.h>
+#include "FullHeader.h"
+
 
 
 movesList* findPathCoveringAllBoard(boardPos start, movesArray** moves, char** board) {
@@ -11,21 +11,6 @@ movesList* findPathCoveringAllBoard(boardPos start, movesArray** moves, char** b
 		return PosListToMoveList(full_board);
 	else
 		return NULL;
-	
-	
-
-
-	/*
-	turn to tree using part 3 function
-	save route
-	check next route
-	if longer release old one save new one
-	else release new one
-	if route == N*M-numof(*) return route
-	*/
-
-
-
 }
 
 movesList* PosListToMoveList(posList pos_list) {
@@ -35,7 +20,7 @@ movesList* PosListToMoveList(posList pos_list) {
 	char row = pos_temp->next->pos[0] -pos_temp->pos[0];
 	char col = pos_temp->next->pos[1] - pos_temp->pos[1];
 	pos_temp = pos_temp->next;
-	moves_list->head = createsmoveCell(row, col,NULL,NULL);//change to real function later
+	moves_list->head = createsmoveCell(row, col,NULL,NULL);
 	moveCell* temp = moves_list->head;
 
 

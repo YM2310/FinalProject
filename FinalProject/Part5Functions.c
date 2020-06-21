@@ -1,8 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include "Header.h"
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
+#include "FullHeader.h"
 
 
 void saveListToBinFile(char* file_name, boardPosArray* pos_arr) {
