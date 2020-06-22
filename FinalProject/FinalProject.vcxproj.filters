@@ -38,18 +38,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PQ3Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mainheader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FullHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>

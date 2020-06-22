@@ -140,10 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="FullHeader.h" />
-    <ClInclude Include="Header.h" />
-    <ClInclude Include="HeaderFile.h" />
-    <ClInclude Include="mainheader.h" />
-    <ClInclude Include="PQ3Header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Part6Functions.c" />

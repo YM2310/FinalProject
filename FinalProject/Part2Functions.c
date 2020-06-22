@@ -43,7 +43,7 @@ moveCell* createsmoveCell(char row, char col , moveCell* next, moveCell* prev)
 	return result;
 }
 
-void addMoves(movesList *moves_list, char mirror[][COLS+1], boardPos start,int* erasedMoves)
+void addMoves(movesList* moves_list, char** mirror, boardPos start, int* erasedMoves)
 {
 	moveCell* currNode = moves_list->head->next;
 	char currMove = 1; 
@@ -71,11 +71,10 @@ void addMoves(movesList *moves_list, char mirror[][COLS+1], boardPos start,int* 
 }
 
 
-void boardCopy(char board[][COLS], char dest[][COLS+1], boardPos start)
-{
+void boardCopy(char** board, char** dest, boardPos start) {
 	int i = 0, j = 0;
-	for (i = 0; i < ROWS + 1; i++)
-		for (j = 0; j < COLS + 1; j++)
+	for (i = 0; i < N + 1; i++)
+		for (j = 0; j < M + 1; j++)
 		{
 			if (i == 0)
 				if (j == 0)
@@ -106,15 +105,15 @@ void swapMove(Move* a, Move* b)
 	*b = temp;
 }
 
-int reveal(movesList *moves_list, boardPos start, char **board)
+int display(movesList *moves_list, boardPos start, char **board)
 {
 	int erasedMoves = 0;
 	int i = 0, j = 0;
-	char mirror[ROWS + 1][COLS + 1];
+	char mirror[N + 1][M + 1];
 	boardCopy(board, mirror, start);
 	addMoves(moves_list, mirror, start,&erasedMoves);
-	for ( i = 0; i < ROWS + 1; i++)
-		for (j = 0; j < COLS + 1; j++)
+	for ( i = 0; i < N + 1; i++)
+		for (j = 0; j < M + 1; j++)
 		{
 			if (mirror[i][j] == HASH)
 				printf("#\t");
@@ -131,11 +130,11 @@ int reveal(movesList *moves_list, boardPos start, char **board)
 boardPosArray** movesToBoardPos(movesArray** moves)
 {
 	int i, j;
-	boardPosArray** pos = (boardPosArray**)malloc(sizeof(boardPosArray*) * ROWS * COLS);
-	for (i = 0; i < ROWS; i++)
-		pos[i] = (boardPosArray*)malloc(sizeof(boardPosArray) * COLS);
-	for (i = 0; i < ROWS; i++)
-		for (j = 0; j < COLS; j++)
+	boardPosArray** pos = (boardPosArray**)malloc(sizeof(boardPosArray*) * N * M);
+	for (i = 0; i < N; i++)
+		pos[i] = (boardPosArray*)malloc(sizeof(boardPosArray) * M);
+	for (i = 0; i < N; i++)
+		for (j = 0; j < M; j++)
 		{
 			pos[i][j].positions = (boardPos*)malloc(sizeof(boardPos) * (moves[i][j].size));
 			pos[i][j].size = moves[i][j].size;
@@ -161,9 +160,9 @@ void convertToPosition(int i, int j, movesArray** moves, boardPos* position)
 boardPosArray** PossibleValidMoves(movesArray** moves, char** board)
 {
 	int i, j, sumRow = 0, sumCol = 0, countWrong = 0;
-	for (i = 0; i < ROWS; i++)
+	for (i = 0; i < N; i++)
 	{
-		for (j = 0; j < COLS; j++)
+		for (j = 0; j < M; j++)
 		{
 			countWrong = 0;
 			int currSize = moves[i][j].size;
@@ -186,7 +185,7 @@ void validMovesByCell(movesArray **moves, char **board, int i, int j, int* count
 	{
 		sumCol = j + moves[i][j].moves[k].cols;
 		sumRow = i + moves[i][j].moves[k].rows;
-		if (sumRow >= ROWS || sumRow < 0 || sumCol >= COLS || sumCol < 0)
+		if (sumRow >= N || sumRow < 0 || sumCol >= M || sumCol < 0)
 		{
 			swapMove(&(moves[i][j].moves[k]), &(moves[i][j].moves[currSize - 1 - (*countWrong)]));
 			k--;

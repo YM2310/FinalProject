@@ -16,7 +16,7 @@ void saveListToBinFile(char* file_name, boardPosArray* pos_arr) {
 
 
 }
-BYTE* createBitArray(int* arr, int size,int bit_arr_size) {
+BYTE* createBitArray(int* arr, int size,int bit_arr_size) {//creates an array of BYTES in binary from a bit map
 	BYTE* bit_arr = (BYTE*)malloc(bit_arr_size);
 
 	for (int i = 0; i < bit_arr_size; i++) {

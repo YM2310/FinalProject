@@ -13,7 +13,7 @@ int checkAndDisplayPathFromFile(char* file_name, movesArray** moves, char** boar
 	bool validpath = isValidpath(boardposArr, board, moves, &pathMoves);
 	int len = boardposArr->size;
 	if (validpath)
-		//display(&pathMoves,boardposArr->positions[0] , board);
+		display(&pathMoves,boardposArr->positions[0] , board);
 	free(boardposArr->positions);
 	free(boardposArr);
 	free(&pathMoves);

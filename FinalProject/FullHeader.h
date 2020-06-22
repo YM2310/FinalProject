@@ -7,8 +7,8 @@
 #define ASTERISK 100
 #define HASH 101
 #define SPACE 102
-#define N 8
-#define M 8 
+#define N 4
+#define M 5 
 #define remain1 (size % 4 == 1)
 #define remain2 (size % 4 == 2)
 #define remain3 (size % 4 == 3)
@@ -19,8 +19,6 @@
 #define MASK4 0x0000003F
 #define MASK1SHORT 0xFC00
 #define MASK2SHORT 0x03F0
-#define ROWS 4
-#define COLS 5
 
 
 
@@ -90,39 +88,33 @@ void removeCells(Move** moves, unsigned int* size, int* remove, int howmany);// 
 boardPos* legalMovesFrom(Move* moves, int movesSize, int row, int col);
 
 /*-------Part 2 declrations-------*/
-movesList makeEmptyList();
-moveCell* createsmoveCell(char row, char col, moveCell* next, moveCell* prev);
-void free_list(moveCell* head);
 void Free_list(movesList l);
+void free_list(moveCell* head);
+movesList makeEmptyList();
 void RemoveFromList(moveCell* after);
-void swapMove(Move* a, Move* b);
-void boardCopy(char** board, char** dest, boardPos start);
+moveCell* createsmoveCell(char row, char col, moveCell* next, moveCell* prev);
 
 void addMoves(movesList* moves_list, char** mirror, boardPos start, int* erasedMoves);
 ///shows the board with the steps.
 ///sends incorrect moveCell to delition
 
-int reveal(movesList* moves_list, boardPos start, char** board);
+void boardCopy(char** board, char** dest, boardPos start);
+void swapMove(Move* a, Move* b);
+
+int display(movesList* moves_list, boardPos start, char** board);
 ///remove incorrect moves from the list, prints the board after values insert
-
-boardPosArray** PossibleValidMoves(movesArray** moves, char** board);
-///returns a matriza of the valid moves array for each cell
-
-void convertToPosition(int i, int j, movesArray** moves, boardPos* position);
-///inserts values to positions allowed to move from 
-
-void validMovesByCell(movesArray** moves, char** board, int i, int j, int* countWrong);
-///checks the array inside a specific cell in 'moves' and puts the invalid moves at the end of the array
 
 boardPosArray** movesToBoardPos(movesArray** moves);
 ///creats and returns a-'boardPosArray**' with values.
 
-/*-------Part 4 declrations-------*/
-movesList* findPathCoveringAllBoard(boardPos start, movesArray** moves, char** board);
-int howManyIlegal(char** board);
-posCell* createPosCell(boardPos pos);
-posCell* longestPathRec(treeNode* head, int moves_left);
-movesList* PosListToMoveList(posList pos_list);
+void convertToPosition(int i, int j, movesArray** moves, boardPos* position);
+///inserts values to positions allowed to move from 
+
+boardPosArray** PossibleValidMoves(movesArray** moves, char** board);
+///returns a matrix of the valid moves array for each cell
+
+void validMovesByCell(movesArray** moves, char** board, int i, int j, int* countWrong);
+///checks the array inside a specific cell in 'moves' and puts the invalid moves at the end of the array
 
 /*-------Part 3 declrations-------*/
 treeNode* createTreeNode(boardPos pos);
@@ -141,8 +133,6 @@ void checkMemoryAllocation(void* ptr);
 
 void createsMovesRec(treeNode* node, movesArray** movesA, char* string);
 
-//boardPosArray** fairMoves(movesArray** moves, char** board);
-
 void Test();
 
 movesArray** createsMovesArray();
@@ -156,7 +146,16 @@ void freeGameBoardAlocc(char** gameBoard);
 void freeMovesAlocc(movesArray** arr);
 
 void PrintMoveRec(treeNode* node);
-/**/
+
+
+/*-------Part 4 declrations-------*/
+movesList* findPathCoveringAllBoard(boardPos start, movesArray** moves, char** board);
+int howManyIlegal(char** board);
+posCell* createPosCell(boardPos pos);
+posCell* longestPathRec(treeNode* head, int moves_left);
+movesList* PosListToMoveList(posList pos_list);
+
+
 
 /*-------part 5 declatationes-------*/
 void saveListToBinFile(char* file_name, boardPosArray* pos_arr);
