@@ -1,5 +1,10 @@
+#include "Part1.h"
+#include "Part2.h"
+#include "Part3.h"
+#include "Part4.h"
+#include "Part5.h"
+#include "Part6.h"
 
-#include "FullHeader.h"
 void printlist(movesList* list);
 movesArray** createMovesArraytest();
 void part4test1();
@@ -8,7 +13,7 @@ int part1test();
 
 
 int main() {
-	
+	part1test();
 }
 
 void part4test1() {

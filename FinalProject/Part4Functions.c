@@ -1,4 +1,6 @@
-#include "FullHeader.h"
+#include "Part4.h"
+#include "Part3.h"
+#include "Part2.h"
 
 
 

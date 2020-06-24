@@ -1,4 +1,5 @@
-#include "FullHeader.h"
+#include "Part6.h"
+#include "Part2.h"
 
 
 int checkAndDisplayPathFromFile(char* file_name, movesArray** moves, char** board)

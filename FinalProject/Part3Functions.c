@@ -1,4 +1,4 @@
-#include "FullHeader.h"
+#include "Part3.h"
 
 
 pathTree findAllPossiblePaths(boardPos start, movesArray **moves, char **board)

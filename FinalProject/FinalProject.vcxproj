@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FullHeader.h" />
+    <ClInclude Include="Structs.h" />
+    <ClInclude Include="Part1.h" />
+    <ClInclude Include="Part2.h" />
+    <ClInclude Include="Part3.h" />
+    <ClInclude Include="Part4.h" />
+    <ClInclude Include="Part5.h" />
+    <ClInclude Include="Part6.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Part6Functions.c" />

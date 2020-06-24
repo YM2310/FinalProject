@@ -38,7 +38,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FullHeader.h">
+    <ClInclude Include="Part1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Part6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
