@@ -36,7 +36,9 @@ void createsMovesRec(treeNode* node, movesArray** movesA, char* string)
 	int row = node->position[0] - 65, col = node->position[1] - 49, k;
 	if (movesA[row][col].size > 0)
 	{
-		char str[] = "A1";
+		boardPos str;
+		str[0] = 'A';
+		str[1] = '1';
 		node->next_possible_positions = (treeNodeListCell*)malloc(sizeof(treeNodeListCell));
 		checkMemoryAllocation(node->next_possible_positions);
 		node->next_possible_positions = NULL;
@@ -45,7 +47,7 @@ void createsMovesRec(treeNode* node, movesArray** movesA, char* string)
 		{
 			str[0] = movesA[row][col].moves[k].rows + 65 + row;
 			str[1] = movesA[row][col].moves[k].cols + 49 + col;
-			if (strcmp(str, string) != 0)
+			if ((str[0]!=string[0]) || (str[1]!=string[1]))
 			{
 				ptrPrev = ptr;
 				ptr = createListCell(createTreeNode(str));
@@ -75,7 +77,11 @@ void deleteunfairStep(movesArray** arr, int row, int col, int index)
 	arr[row][col].moves[index].cols = arr[row][col].moves[arr[row][col].size - 1].cols;
 	arr[row][col].moves[index].rows = arr[row][col].moves[arr[row][col].size - 1].rows; 
 	arr[row][col].size--;
-	arr[row][col].moves = (Move*)realloc(arr[row][col].moves, arr[row][col].size * sizeof(Move)); 
+	if (arr[row][col].size != 0)/// yahav- if the cell has no legal moves, this forces a NULL pointer cause realloc to 0. 
+								/// FIXED made sure to not realloc on 0;
+		arr[row][col].moves = (Move*)realloc(arr[row][col].moves, arr[row][col].size * sizeof(Move));
+	else
+		free(arr[row][col].moves);
 	checkMemoryAllocation(arr[row][col].moves);
 }
 
@@ -95,7 +101,8 @@ treeNode* createTreeNode(boardPos pos)
 {
 	treeNode* node = (treeNode*)malloc(sizeof(treeNode));
 	checkMemoryAllocation(node);
-	strcpy(node->position, pos);
+	node->position[0] = pos[0];
+	node->position[1] = pos[1];
 	node->next_possible_positions = (treeNodeListCell*)malloc(sizeof(treeNodeListCell));
 	checkMemoryAllocation(node->next_possible_positions);
 	return node;

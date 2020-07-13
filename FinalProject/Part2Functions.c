@@ -87,7 +87,7 @@ void boardCopy(char** board, char** dest, boardPos start) {
 					dest[i][j] = 'A' + i;
 				else
 				{
-					if (board[i][j] == '*')
+					if (board[i - 1][j - 1] == '*')
 						dest[i][j] = ASTERISK;
 					else if (start[0] - '0' == i && start[1] - 'A' == j)
 						dest[i][j] = HASH;

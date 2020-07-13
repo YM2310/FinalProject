@@ -9,7 +9,7 @@ void saveListToBinFile(char* file_name, boardPosArray* pos_arr) {
 	BYTE* bit_arr = createBitArray(bitmap, bitmap_size, bit_arr_size);
 
 	FILE* bin_file = fopen(file_name, "wb");
-	fwrite(&pos_arr->size, sizeof(int), 1, bin_file);
+	fwrite(&pos_arr->size, sizeof(short int), 1, bin_file);
 	fwrite(bit_arr, sizeof(bit_arr), 1, bin_file);
 	fclose(bin_file);
 	return;

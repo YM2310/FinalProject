@@ -13,7 +13,8 @@ int part1test();
 
 
 int main() {
-	part1test();
+part4test1();
+
 }
 
 void part4test1() {
